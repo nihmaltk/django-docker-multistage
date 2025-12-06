@@ -1,0 +1,31 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}All Recipes{% endblock %}
+
+{% block content %}
+<h2>All Recipes</h2>
+
+{% if recipes %}
+    <div class="recipe-grid">
+        {% for recipe in recipes %}
+        <div class="recipe-card">
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+            {% else %}
+                <div class="no-image">📷 No Image</div>
+            {% endif %}
+            
+            <h3><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}</a></h3>
+            
+            <div class="recipe-meta">
+                <span class="badge badge-{{ recipe.category|lower }}">{{ recipe.get_category_display }}</span>
+                <span class="badge badge-{{ recipe.difficulty|lower }}">{{ recipe.get_difficulty_display }}</span>
+                <span class="time">⏱️ {{ recipe.cooking_time }} min</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No recipes yet. <a href="/admin/">Add some in the admin panel!</a></p>
+{% endif %}
+{% endblock %}

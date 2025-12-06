@@ -1,0 +1,35 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block content %}
+<div class="recipe-detail">
+    {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+    {% endif %}
+    
+    <h2>{{ recipe.title }}</h2>
+    
+    <div class="recipe-info">
+        <span class="badge badge-{{ recipe.category|lower }}">{{ recipe.get_category_display }}</span>
+        <span class="badge badge-{{ recipe.difficulty|lower }}">{{ recipe.get_difficulty_display }}</span>
+        <span class="time">⏱️ {{ recipe.cooking_time }} minutes</span>
+    </div>
+    
+    <div class="recipe-section">
+        <h3>🥘 Ingredients</h3>
+        <pre>{{ recipe.ingredients }}</pre>
+    </div>
+    
+    <div class="recipe-section">
+        <h3>📝 Instructions</h3>
+        <pre>{{ recipe.instructions }}</pre>
+    </div>
+    
+    <div class="recipe-footer">
+        <p>Created: {{ recipe.created_at|date:"M d, Y" }}</p>
+        <a href="{% url 'recipe_list' %}" class="btn">← Back to All Recipes</a>
+        <a href="/admin/recipes/recipe/{{ recipe.pk }}/change/" class="btn btn-edit">Edit</a>
+    </div>
+</div>
+{% endblock %}
