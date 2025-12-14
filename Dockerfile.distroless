@@ -1,0 +1,23 @@
+# STAGE 1: Builder - Install and Build
+FROM python:3.11-slim AS builder
+WORKDIR /app
+COPY requirements.txt .
+
+# Install packages in user directory (not system-wide)
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+COPY . .
+RUN python manage.py collectstatic --noinput
+
+# STAGE 2: Runner - Final Image
+FROM gcr.io/distroless/python3-debian12
+WORKDIR /app
+
+# Copy installed packages from builder stage
+COPY --from=builder /root/.local /root/.local
+
+# Copy application code from builder stage
+COPY --from=builder /app .
+
+EXPOSE 8000
+CMD [ "/root/.local/bin/gunicorn", "recipe_book.wsgi:application", "--bind", "0.0.0.0:8000" ]
