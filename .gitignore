@@ -12,6 +12,7 @@ db.sqlite3
 
 # Environment
 .env
+db.env
 
 # IDE
 .vscode/
