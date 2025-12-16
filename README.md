@@ -45,7 +45,7 @@ POSTGRES_PASSWORD=recipepass
 
 3. **Build images**
 
-Choose one or all of the following commands to build the images. The project goal is to compare them!
+- Choose one or all of the following commands to build the images. The project goal is to compare them!
 
 **Single-stage Build** 
 ```bash
