@@ -25,7 +25,7 @@ cd django-docker-multistage
 
 2. **Create .env and db.env File**
 
-Create a `.env` file in the project root:
+- Create a `.env` file in the project root:
 ```bash
 SECRET_KEY=secret_key
 DEBUG=False
@@ -36,7 +36,7 @@ DB_PASSWORD=recipepass
 DB_HOST=recipedb # Must match the database container name. Docker's custom network uses the container name as the DNS hostname.
 DB_PORT=5432
 ```
-Create a `db.env` file in the project root:
+- Create a `db.env` file in the project root:
 ```bash
 POSTGRES_DB=recipedb
 POSTGRES_USER=recipeuser
@@ -44,6 +44,7 @@ POSTGRES_PASSWORD=recipepass
 ```
 
 3. **Build images**
+
 Choose one or all of the following commands to build the images. The project goal is to compare them!
 
 **Single-stage Build** 
