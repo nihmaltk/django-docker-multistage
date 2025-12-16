@@ -5,6 +5,7 @@ __pycache__
 *.pyd
 .git
 .gitignore
+.gitattributes
 db.sqlite3
 staticfiles
 media
