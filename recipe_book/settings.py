@@ -89,11 +89,11 @@ WSGI_APPLICATION = 'recipe_book.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='recipedb'),
-        'USER': config('DB_USER', default='recipeuser'),
-        'PASSWORD': config('DB_PASSWORD', default='recipepass'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+        'NAME': config('POSTGRES_DB', default='recipedb'),
+        'USER': config('POSTGRES_USER', default='recipeuser'),
+        'PASSWORD': config('POSTGRES_PASSWORD', default='recipepass'),
+        'HOST': config('POSTGRES_HOST', default='localhost'),
+        'PORT': config('POSTGRES_PORT', default='5432'),
     }
 }
 

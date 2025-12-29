@@ -23,24 +23,20 @@ git clone https://github.com/nihmaltk/django-docker-multistage.git
 cd django-docker-multistage
 ```
 
-2. **Create .env and db.env File**
+2. **Create .env File**
 
 - Create a `.env` file in the project root:
 ```bash
+# Django Settings
 SECRET_KEY=secret_key
 DEBUG=False
 ALLOWED_HOSTS=*
-DB_NAME=recipedb
-DB_USER=recipeuser
-DB_PASSWORD=recipepass
-DB_HOST=recipedb # Must match the database container name. Docker's custom network uses the container name as the DNS hostname.
-DB_PORT=5432
-```
-- Create a `db.env` file in the project root:
-```bash
+# Database Connection
 POSTGRES_DB=recipedb
 POSTGRES_USER=recipeuser
 POSTGRES_PASSWORD=recipepass
+POSTGRES_HOST=recipedb 
+POSTGRES_PORT=5432
 ```
 
 3. **Build images**
@@ -71,7 +67,7 @@ docker network create recipe-network
 docker run -d \
   --name recipedb \
   --network recipe-network \
-  --env-file db.env \
+  --env-file .env \
   postgres:15-alpine
 ```
 - **Run Application**
