@@ -10,7 +10,6 @@ db.sqlite3
 staticfiles
 media
 .env
-db.env
 README.md
 *.md
 .DS_Store
