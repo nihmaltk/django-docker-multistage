@@ -23,20 +23,11 @@ git clone https://github.com/nihmaltk/django-docker-multistage.git
 cd django-docker-multistage
 ```
 
-2. **Create .env File**
-
-- Create a `.env` file in the project root:
+2.  **Configure Environment**
 ```bash
-# Django Settings
-SECRET_KEY=secret_key
-DEBUG=False
-ALLOWED_HOSTS=*
-# Database Connection
-POSTGRES_DB=recipedb
-POSTGRES_USER=recipeuser
-POSTGRES_PASSWORD=recipepass
-POSTGRES_HOST=recipedb 
-POSTGRES_PORT=5432
+# Copy environment template
+cp .env.example .env
+# Edit .env with your values
 ```
 
 3. **Build images**
